@@ -1,7 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+<head>
+<script>
+function calculate()
+{
+  var area, num, sum;
+  area = parseInt(document.getElementById("area").value);
+  num = parseInt(document.getElementById("occ").value);
+  oTemp = parseInt(document.getElementById("out").value);
+  iTemp = parseInt(document.getElementById("in").value);
+  type = document.getElementById("type").value;
+  var load;
+  if(type == "Residential")
+  {
+  load = 100 * num;
+  }
+  else{
+  load = 150*num;
+  }
+  var conduction = 30 * area * (oTemp - iTemp);
+  
+  sum = load + conduction;
+  document.getElementById("answer").value = sum;
+}
+</script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<p>Area of the Building: <input id="area"></p>
+<p>No. of Occupants in the Building : <input id="occ"></p>
+<p>Type of Building : <select id="type">
+  <option value="Residential">Residential</option>
+  <option value="Commercial">Commercial</option>
+</select></p>
+<p>Outdoor Temperature : <input id="out"></p>
+<p>Indoor Temperature : <input id="in"></p>
+
+<button onclick="calculate()">Calculate</button>
+<p>Sensible Cooling Load = <input id="answer"></p>
+
 </body>
 </html>
